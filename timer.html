@@ -35,47 +35,6 @@
 
     <div id="timer">00:00:00</div>
 
-    <script>
-        let timer;
-        let hoursInput = document.getElementById('hours');
-        let minutesInput = document.getElementById('minutes');
-        let secondsInput = document.getElementById('seconds');
-        let timerDisplay = document.getElementById('timer');
-
-        function startTimer() {
-            let hours = parseInt(hoursInput.value) || 0;
-            let minutes = parseInt(minutesInput.value) || 0;
-            let seconds = parseInt(secondsInput.value) || 0;
-
-            let totalSeconds = hours * 3600 + minutes * 60 + seconds;
-
-            timer = setInterval(function() {
-                if (totalSeconds <= 0) {
-                    clearInterval(timer);
-                } else {
-                    let h = Math.floor(totalSeconds / 3600);
-                    let m = Math.floor((totalSeconds % 3600) / 60);
-                    let s = totalSeconds % 60;
-
-                    timerDisplay.innerText = `${formatTime(h)}:${formatTime(m)}:${formatTime(s)}`;
-                    totalSeconds--;
-                }
-            }, 1000);
-        }
-
-        function pauseTimer() {
-            clearInterval(timer);
-        }
-
-        function resetTimer() {
-            clearInterval(timer);
-            timerDisplay.innerText = '00:00:00';
-        }
-
-        function formatTime(time) {
-            return time < 10 ? `0${time}` : time;
-        }
-    </script>
-
 </body>
+<script src="./index.js"></script>
 </html>
